@@ -13,6 +13,8 @@ class ViewController:
     UITableViewDelegate,
     UITableViewDataSource
 {
+    @IBOutlet weak var tableView: UITableView!
+
     private let data: [(String,String)] = [
         ("りんご", "Apple"),
         ("みかん", "Orange"),
@@ -22,11 +24,7 @@ class ViewController:
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let tableView: UITableView = UITableView(frame: view.frame, style: .plain)
         tableView.register(TableCellView.self, forCellReuseIdentifier: TableCellView.ID)
-        tableView.delegate = self
-        tableView.dataSource = self
-        view.addSubview(tableView)
     }
 
     // UITableViewDataSource
