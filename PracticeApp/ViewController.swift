@@ -57,9 +57,10 @@ class ViewController:
         return cell
     }
 
-@objc func onAddClick() {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let vc: ViewController = storyboard.instantiateInitialViewController() as! ViewController
+    @objc
+    func onAddClick() {
+        let vc: ViewController = self.storyboard!.instantiateViewController(
+            withIdentifier: "MainViewController") as! ViewController
         vc.stackIndex = self.stackIndex + 1
         self.navigationController?.pushViewController(vc, animated: true)
     }
