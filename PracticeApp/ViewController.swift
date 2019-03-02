@@ -23,6 +23,8 @@ class ViewController:
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+	self.title = "フルーツ"
     }
 
     // UITableViewDataSource
