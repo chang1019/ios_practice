@@ -21,10 +21,20 @@ class ViewController:
         ("ぶどう", "Grape"),
     ]
 
+    private var stackIndex = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-	self.title = "フルーツ"
+        self.title = "フルーツ index:\(stackIndex)"
+
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back",
+                                                                style: .plain,
+                                                                target: nil,
+                                                                action: nil)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+                                                                 target: self,
+                                                                 action: #selector(onAddClick))
     }
 
     // UITableViewDataSource
@@ -45,6 +55,13 @@ class ViewController:
         cell.textLabel?.text = data[rowIndex].0
         cell.detailTextLabel?.text = data[rowIndex].1
         return cell
+    }
+
+@objc func onAddClick() {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let vc: ViewController = storyboard.instantiateInitialViewController() as! ViewController
+        vc.stackIndex = self.stackIndex + 1
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
